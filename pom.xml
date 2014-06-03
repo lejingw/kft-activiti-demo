@@ -55,10 +55,10 @@
 	</properties>
 
 	<repositories>
-		<repository>
+<!-- 		<repository>
 			<id>kafeitu</id>
             <url>http://maven.kafeitu.me/nexus/content/groups/public</url>
-		</repository>
+		</repository> -->
 		<repository>
 			<id>Activiti</id>
 			<url>https://maven.alfresco.com/nexus/content/groups/public</url>
