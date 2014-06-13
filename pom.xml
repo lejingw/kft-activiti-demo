@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>me.kafeitu.demo</groupId>
-	<artifactId>kft-activiti-demo</artifactId>
+	<artifactId>activiti-demo</artifactId>
 	<version>1.11</version>
 	<packaging>war</packaging>
 	<name>Activiti demo</name>
@@ -546,13 +546,13 @@
             </plugin>
 		</plugins>
 
-        <finalName>kft-activiti-demo</finalName>
+        <finalName>activiti-demo</finalName>
 	</build>
 
 	<profiles>
 		<!-- 开发环境 -->
 		<profile>
-			<id>kft-activiti-demo</id>
+			<id>activiti-demo</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
@@ -636,12 +636,12 @@
 								</sql>
 
 								<sql driver="${jdbc.driver}" url="${jdbc.url}" userid="${jdbc.username}" password="${jdbc.password}"
-									src="src/main/resources/sql/${sql.type}/create/activiti.${sql.type}.create.engine.sql" onerror="continue">
+									src="src/main/resources/sql/${sql.type}/create/activiti.${sql.type}55.create.engine.sql" onerror="continue">
 									<classpath refid="maven.test.classpath" />
 								</sql>
 
 								<sql driver="${jdbc.driver}" url="${jdbc.url}" userid="${jdbc.username}" password="${jdbc.password}"
-									src="src/main/resources/sql/${sql.type}/create/activiti.${sql.type}.create.history.sql" onerror="continue">
+									src="src/main/resources/sql/${sql.type}/create/activiti.${sql.type}55.create.history.sql" onerror="continue">
 									<classpath refid="maven.test.classpath" />
 								</sql>
 

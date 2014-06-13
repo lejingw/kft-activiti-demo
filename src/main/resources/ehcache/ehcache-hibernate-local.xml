@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ehcache>
 
-	<diskStore path="java.io.tmpdir/hibernate/kft-activiti-demo" />
+	<diskStore path="java.io.tmpdir/hibernate/activiti-demo" />
 
 	<!-- DefaultCache setting. -->
 	<defaultCache maxElementsInMemory="10000" memoryStoreEvictionPolicy="LRU" eternal="false"

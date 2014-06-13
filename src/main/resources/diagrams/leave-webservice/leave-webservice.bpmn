@@ -6,7 +6,7 @@
 	xmlns:leave="http://webservice.kafeitu.me/" typeLanguage="http://www.w3.org/2001/XMLSchema"
 	expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="me.kafeitu.demo.activiti.webservice">
 
-	<import importType="http://schemas.xmlsoap.org/wsdl/" location="http://localhost:8080/kft-activiti-demo/services/leave?wsdl"
+	<import importType="http://schemas.xmlsoap.org/wsdl/" location="http://localhost:8080/activiti-demo/services/leave?wsdl"
 		namespace="http://webservice.kafeitu.me/" />
 
 	<!-- interface: implementationRef属性的值要与WSDL（wsdl:portType）中的保持一致，即@WebService中的serviceName属性 -->

@@ -56,14 +56,9 @@
             </li>
         </ul>
     </div>
+    
     <div id="multiInstance" class="template">
         在填写<strong>会签参与人</strong>字段时使用用户的ID作为值，例如：<code>kafeitu,admin</code>表示两个用户，即两个任务实例被创建。
-    </div>
-    <div class="project-info template">
-        <ul>
-            <li><a target="_blank" href='https://github.com/henryyan/kft-activiti-demo'>kft-activiti-demo</a>为Activiti初学者快速入门所设计。</li>
-            <li>源代码托管Github：<a target="_blank" href='https://github.com/henryyan/kft-activiti-demo'>https://github.com/henryyan/kft-activiti-demo</a></li>
-        </ul>
     </div>
 
     <div class="arch template">
@@ -98,44 +93,6 @@
         </ul>
     </div>
 
-    <div class="links template">
-        <p>
-            <b>Demo<span style="color: red">Wiki</span>：</b><a target="_blank" href="https://github.com/henryyan/kft-activiti-demo/wiki">https://github.com/henryyan/kft-activiti-demo/wiki</a>
-        </p>
-        <p>
-            <b>Demo<span style="color: red">源码</span>：</b><a target="_blank" href="https://github.com/henryyan/kft-activiti-demo">https://github.com/henryyan/kft-activiti-demo</a>
-        </p>
-        <p>
-            <b>Activiti<span style="color: red">资料</span>：</b><a target="_blank" href="http://www.kafeitu.me/categories.html#activiti-ref">http://www.kafeitu.me/categories.html#activiti-ref</a>
-        </p>
-        <p>
-            <b>Activiti<span style="color: red">中文论坛</span>：</b><a target="_blank" href="http://www.activiti-cn.org">http://www.activiti-cn.org</a>
-        </p>
-    </div>
-
-    <div class="aboutme template">
-        <ul>
-            <li>
-                <b>作者：</b><a target="_blnak" href="http://www.kafeitu.me/?f=kad">咖啡兔</a>
-            </li>
-            <li>
-                <b>QQ：</b>576525789
-            </li>
-            <li>
-                <b>Weibo：</b><a target="_blank" href="http://weibo.com/kafeituzi">@kafeituzi</a>
-            </li>
-            <li>
-                <b>QQ群：</b>
-                <ul>
-                    <li>Activiti中文群1(<span style="color:red">已满</span>)：236540304</li>
-                    <li>Activiti中文群2(<span style="color:green;font-weight: bold">欢迎</span>)：23539326</li>
-                    <li>Activiti中文群3(<span style="color:red">已满</span>)：139983080</li>
-                    <li>Activiti中文群4(<span style="color:red">已满</span>)：327913744</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-
     <div class="rest template">
         <p>在web.xml中映射了两个两个Servlet</p>
         <dl>
@@ -148,7 +105,7 @@
                 <p>官方提供的完整Rest接口</p>
                 <p>访问路径：http://localhost/yourappname/<用户手册提供的Rest地址></p>
                 <p>映射路径：/rest/*</p>
-                <p><a href="http://www.kafeitu.me/activiti/2013/01/12/kft-activiti-demo-rest.html">如何使用Activiti Rest模块</a></p>
+                <p><a href="http://www.kafeitu.me/activiti/2013/01/12/activiti-demo-rest.html">如何使用Activiti Rest模块</a></p>
             </dd>
         </dl>
     </div>

@@ -17,12 +17,9 @@ import java.util.*;
 
 /**
  * 系统属性工具类
- *
  * @author HenryYan
  */
 public class PropertyFileUtil {
-
-
     private static final String DEFAULT_ENCODING = "UTF-8";
     private static Logger logger = LoggerFactory.getLogger(PropertyFileUtil.class);
     private static Properties properties;
@@ -36,7 +33,6 @@ public class PropertyFileUtil {
      * 初始化读取配置文件，读取的文件列表位于classpath下面的application-files.properties<br/>
      * <p/>
      * 多个配置文件会用最后面的覆盖相同属性值
-     *
      * @throws IOException 读取属性文件时
      */
     public static void init() throws IOException {
@@ -117,11 +113,8 @@ public class PropertyFileUtil {
      */
     public static Properties loadProperties(String... resourcesPaths) throws IOException {
         Properties props = new Properties();
-
         for (String location : resourcesPaths) {
-
             logger.debug("Loading properties file from:" + location);
-
             InputStream is = null;
             try {
                 Resource resource = resourceLoader.getResource(location);
