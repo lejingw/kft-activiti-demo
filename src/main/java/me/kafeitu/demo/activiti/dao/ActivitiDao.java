@@ -21,7 +21,7 @@ public class ActivitiDao {
      * @return
      */
     public int deleteFormPropertyByProcessInstanceId(String processInstanceId) {
-        int i = entityManager.createNativeQuery("delete from act_hi_detail where proc_inst_id_ = ? and type_ = 'FormProperty' ")
+        int i = entityManager.createNativeQuery("delete from ACT_HI_DETAIL where proc_inst_id_ = ? and type_ = 'FormProperty' ")
                 .setParameter(1, processInstanceId).executeUpdate();
         return i;
     }

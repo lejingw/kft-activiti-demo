@@ -22,21 +22,25 @@ public class LeaveEntityManager {
     @Transactional
     public LeaveJpaEntity newLeave(DelegateExecution execution) {
         LeaveJpaEntity leave = new LeaveJpaEntity();
+        
         leave.setProcessInstanceId(execution.getProcessInstanceId());
+        
         leave.setUserId(execution.getVariable("applyUserId").toString());
+        
         leave.setStartTime((Date) execution.getVariable("startTime"));
         leave.setEndTime((Date) execution.getVariable("endTime"));
         leave.setLeaveType(execution.getVariable("leaveType").toString());
         leave.setReason(execution.getVariable("reason").toString());
         leave.setApplyTime(new Date());
+        
         entityManager.persist(leave);
         return leave;
     }
 
-    @Transactional
-    public void save(LeaveJpaEntity leave) {
-        entityManager.persist(leave);
-    }
+//    @Transactional
+//    public void save(LeaveJpaEntity leave) {
+//        entityManager.persist(leave);
+//    }
 
     public LeaveJpaEntity getLeave(Long id) {
         return entityManager.find(LeaveJpaEntity.class, id);

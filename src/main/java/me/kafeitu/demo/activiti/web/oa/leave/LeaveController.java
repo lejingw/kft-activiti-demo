@@ -48,9 +48,6 @@ public class LeaveController {
     protected LeaveWorkflowService workflowService;
 
     @Autowired
-    protected RuntimeService runtimeService;
-
-    @Autowired
     protected TaskService taskService;
 
     @RequestMapping(value = {"apply", ""})

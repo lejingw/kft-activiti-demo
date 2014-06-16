@@ -55,7 +55,9 @@ PropertyFileUtil.init();
 		        			<span title="角色：${groupNames }">${user.firstName } ${user.lastName }/${user.id }</span>
 		        		</div>
 		        		<div style="text-align: right;">
+		        		<!--
 		        			<a id="chang-theme" href="#">切换风格</a>
+		        		-->
 		       				<a href="#" id="loginOut">安全退出</a>
 		        		</div>
 		        	</div>

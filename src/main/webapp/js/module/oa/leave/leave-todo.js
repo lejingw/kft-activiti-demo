@@ -24,7 +24,7 @@ $(function() {
 
 
 // 用于保存加载的详细信息
-var detail = {};
+//var detail = {};
 
 /**
  * 加载详细信息
@@ -33,20 +33,19 @@ var detail = {};
 function loadDetail(id, withVars, callback) {
     var dialog = this;
     $.getJSON(ctx + '/oa/leave/detail/' + id, function(data) {
-        detail = data;
+        //detail = data;
         $.each(data, function(k, v) {
-			
-			// 格式化日期
-			if (k == 'applyTime' || k == 'startTime' || k == 'endTime') {
-				$('.view-info td[name=' + k + ']', dialog).text(new Date(v).format('yyyy-MM-dd hh:mm'));
-			} else {
-	            $('.view-info td[name=' + k + ']', dialog).text(v);
-			}
+		// 格式化日期
+		if (k == 'applyTime' || k == 'startTime' || k == 'endTime') {
+			$('.view-info td[name=' + k + ']', dialog).text(new Date(v).format('yyyy-MM-dd hh:mm'));
+		} else {
+            		$('.view-info td[name=' + k + ']', dialog).text(v);
+		}
 			
         });
-		if ($.isFunction(callback)) {
-			callback(data);
-		}
+	if ($.isFunction(callback)) {
+		callback(data);
+	}
     });
 }
 
@@ -57,15 +56,7 @@ function loadDetail(id, withVars, callback) {
 function loadDetailWithTaskVars(leaveId, taskId, callback) {
     var dialog = this;
     $.getJSON(ctx + '/oa/leave/detail-with-vars/' + leaveId + "/" + taskId, function(data) {
-        detail = data;
-        $.each(data, function(k, v) {
-            // 格式化日期
-			if (k == 'applyTime' || k == 'startTime' || k == 'endTime') {
-				$('.view-info td[name=' + k + ']', dialog).text(new Date(v).format('yyyy-MM-dd hh:mm'));
-			} else {
-	            $('.view-info td[name=' + k + ']', dialog).text(v);
-			}
-        });
+        //detail = data;
 		if ($.isFunction(callback)) {
 			callback(data);
 		}
@@ -77,10 +68,10 @@ function loadDetailWithTaskVars(leaveId, taskId, callback) {
  * @param {Object} taskId
  */
 function complete(taskId, variables) {
-    var dialog = this;
-    
+	var dialog = this;
+
 	// 转换JSON为字符串
-    var keys = "", values = "", types = "";
+	var keys = "", values = "", types = "";
 	if (variables) {
 		$.each(variables, function() {
 			if (keys != "") {
@@ -95,23 +86,23 @@ function complete(taskId, variables) {
 	}
 	
 	$.blockUI({
-        message: '<h2><img src="' + ctx + '/images/ajax/loading.gif" align="absmiddle"/>正在提交请求……</h2>'
-    });
+		message: '<h2><img src="' + ctx + '/images/ajax/loading.gif" align="absmiddle"/>正在提交请求……</h2>'
+	});
 	
 	// 发送任务完成请求
-    $.post(ctx + '/oa/leave/complete/' + taskId, {
-        keys: keys,
-        values: values,
-        types: types
-    }, function(resp) {
-		$.unblockUI();
-        if (resp == 'success') {
-            alert('任务完成');
-            location.reload();
-        } else {
-            alert('操作失败!');
-        }
-    });
+	$.post(ctx + '/oa/leave/complete/' + taskId, {
+			keys: keys,
+			values: values,
+			types: types
+		}, function(resp) {
+			$.unblockUI();
+			if (resp == 'success') {
+				alert('任务完成');
+				location.reload();
+			} else {
+				alert('操作失败!');
+			}
+		});
 }
 
 

@@ -7,12 +7,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import me.kafeitu.demo.activiti.util.Page;
 import me.kafeitu.demo.activiti.util.PageUtil;
 import me.kafeitu.demo.activiti.util.UserUtil;
+
 import org.activiti.engine.FormService;
 import org.activiti.engine.HistoryService;
 import org.activiti.engine.IdentityService;
@@ -30,6 +32,7 @@ import org.activiti.engine.repository.ProcessDefinitionQuery;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.runtime.ProcessInstanceQuery;
 import org.activiti.engine.task.Task;
+import org.activiti.engine.task.TaskQuery;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -153,10 +156,9 @@ public class DynamicFormController {
         // 设置task为null，否则输出json的时候会报错
         taskFormData.setTask(null);
 
-        result.put("taskFormData", taskFormData);
-    /*
-     * 读取enum类型数据，用于下拉框
-     */
+	    /*
+	     * 读取enum类型数据，用于下拉框
+	     */
         List<FormProperty> formProperties = taskFormData.getFormProperties();
         for (FormProperty formProperty : formProperties) {
             Map<String, String> values = (Map<String, String>) formProperty.getType().getInformation("values");
@@ -168,6 +170,7 @@ public class DynamicFormController {
             }
         }
 
+        result.put("taskFormData", taskFormData);
         return result;
     }
 
@@ -282,6 +285,28 @@ public class DynamicFormController {
 
             List<Task> leaveJpaTasks = taskService.createTaskQuery().processDefinitionKey("leave-jpa")
                     .taskCandidateOrAssigned(user.getId()).active().orderByTaskId().desc().list();
+            
+            
+
+            // 根据当前人的ID查询
+//            TaskQuery todoQuery = taskService.createTaskQuery().processDefinitionKey("leave-jpa").taskAssignee(user.getId()).active().orderByTaskId().desc()
+//                    .orderByTaskCreateTime().desc();
+//            List<Task> todoList = todoQuery.list();
+//
+//            // 根据当前人未签收的任务
+//            TaskQuery claimQuery = taskService.createTaskQuery().processDefinitionKey("leave-jpa").taskCandidateUser(user.getId()).active().orderByTaskId().desc()
+//                    .orderByTaskCreateTime().desc();
+//            List<Task> unsignedTasks = claimQuery.list();
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
             tasks.addAll(dynamicFormTasks);
             tasks.addAll(dispatchTasks);
