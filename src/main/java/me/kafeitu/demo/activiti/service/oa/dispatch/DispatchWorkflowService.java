@@ -37,8 +37,7 @@ public class DispatchWorkflowService {
      * 是否允许结束会签（多实例）
      * 参数的含义请参考用户手册
      */
-    public Boolean canComplete(Execution execution, Integer rate, Integer nrOfInstances, Integer nrOfActiveInstances, Integer nrOfCompletedInstances,
-                               Integer loopCounter) {
+    public Boolean canComplete(Execution execution, Integer rate, Integer nrOfInstances, Integer nrOfActiveInstances, Integer nrOfCompletedInstances, Integer loopCounter) {
         String agreeCounterName = "agreeCounter";
         Object agreeCounter = runtimeService.getVariable(execution.getId(), agreeCounterName);
 

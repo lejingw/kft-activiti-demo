@@ -1,6 +1,8 @@
 package me.kafeitu.demo.activiti.service.oa.leave;
 
 import me.kafeitu.demo.activiti.dao.ActivitiDao;
+import me.kafeitu.demo.activiti.entity.oa.LeaveJpaEntity;
+
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.ExecutionListener;
 import org.slf4j.Logger;
@@ -14,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author: Henry Yan
  */
-@Service
+@Service("leaveProcessEndListener")
 @Transactional
 public class LeaveProcessEndListener implements ExecutionListener {
 
@@ -25,6 +27,8 @@ public class LeaveProcessEndListener implements ExecutionListener {
 
     @Override
     public void notify(DelegateExecution execution) throws Exception {
+    	LeaveJpaEntity leave = (LeaveJpaEntity) execution.getVariable("leave");
+    	System.out.println(leave.getRealityStartTime() + "----"+ leave.getRealityEndTime());
         String processInstanceId = execution.getProcessInstanceId();
 
         int i = activitiDao.deleteFormPropertyByProcessInstanceId(processInstanceId);

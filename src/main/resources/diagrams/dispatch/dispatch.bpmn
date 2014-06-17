@@ -26,13 +26,11 @@
         <activiti:formProperty id="countersignUsers" name="会签参与人" type="users" writable="false"></activiti:formProperty>
       </extensionElements>
       <multiInstanceLoopCharacteristics isSequential="false" activiti:collection="${countersignUsers}" activiti:elementVariable="countersignUser">
-        <completionCondition>${dispatchWorkflowService.canComplete(execution, rate, nrOfInstances, nrOfActiveInstances,
-					nrOfCompletedInstances, loopCounter)}</completionCondition>
+        <completionCondition>${dispatchWorkflowService.canComplete(execution, rate, nrOfInstances, nrOfActiveInstances, nrOfCompletedInstances, loopCounter)}</completionCondition>
       </multiInstanceLoopCharacteristics>
     </userTask>
     <userTask id="send" name="下发文件" activiti:assignee="${applyUser}">
       <extensionElements>
-        <activiti:formProperty id="incept" name="发送至" type="string" writable="false"></activiti:formProperty>
         <activiti:formProperty id="rate" name="投票比例" type="enum" writable="false">
           <activiti:value id="100" name="100%"></activiti:value>
           <activiti:value id="70" name="70%"></activiti:value>

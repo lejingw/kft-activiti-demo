@@ -54,6 +54,13 @@
 		<property name="databaseSchemaUpdate" value="true" />
 		<property name="jobExecutorActivate" value="false" />
 		<property name="history" value="full" />
+<!-- 
+		<property name="beans">
+		    <map>
+		      <entry key="leaveProcessEndListener" value-ref="leaveProcessEndListener" />
+		    </map>
+		</property>
+ -->
 		
 		<!-- 自定义表单字段类型 -->
 		<property name="customFormTypes">
@@ -65,6 +72,9 @@
 
 	<bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
 		<property name="processEngineConfiguration" ref="processEngineConfiguration" />
+	</bean>
+	<bean id="activitiRule" class="org.activiti.engine.test.ActivitiRule">
+		<property name="processEngine" ref="processEngine" />
 	</bean>
 
 	<bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService" />

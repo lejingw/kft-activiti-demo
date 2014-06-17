@@ -276,45 +276,29 @@ public class DynamicFormController {
              * 这里为了演示区分开自定义表单的请假流程，值读取leave-dynamic-from
              * 在FormKeyController中有使用native方式查询的例子
              */
-
             List<Task> dynamicFormTasks = taskService.createTaskQuery().processDefinitionKey("leave-dynamic-from")
-                    .taskCandidateOrAssigned(user.getId()).active().orderByTaskId().desc().list();
+            		.taskCandidateOrAssigned(user.getId()).active().orderByTaskId().desc().list();
 
             List<Task> dispatchTasks = taskService.createTaskQuery().processDefinitionKey("dispatch")
                     .taskCandidateOrAssigned(user.getId()).active().orderByTaskId().desc().list();
+            List<Task> dispatchTasks2 = taskService.createTaskQuery().processDefinitionKey("dispatch")
+            		.taskAssignee(user.getId()).active().orderByTaskId().desc().list();
+            dispatchTasks.addAll(dispatchTasks2);
 
             List<Task> leaveJpaTasks = taskService.createTaskQuery().processDefinitionKey("leave-jpa")
                     .taskCandidateOrAssigned(user.getId()).active().orderByTaskId().desc().list();
             
+            //解决leave-jpa中reportBack节点usertask直接assigne用户数据，taskCandidateOrAssigned方法改为taskAssignee方法
+            List<Task> leaveJpaTasks2 = taskService.createTaskQuery().processDefinitionKey("leave-jpa")
+            		.taskAssignee(user.getId()).active().orderByTaskId().desc().list();
+            leaveJpaTasks.addAll(leaveJpaTasks2);
             
-
-            // 根据当前人的ID查询
-//            TaskQuery todoQuery = taskService.createTaskQuery().processDefinitionKey("leave-jpa").taskAssignee(user.getId()).active().orderByTaskId().desc()
-//                    .orderByTaskCreateTime().desc();
-//            List<Task> todoList = todoQuery.list();
-//
-//            // 根据当前人未签收的任务
-//            TaskQuery claimQuery = taskService.createTaskQuery().processDefinitionKey("leave-jpa").taskCandidateUser(user.getId()).active().orderByTaskId().desc()
-//                    .orderByTaskCreateTime().desc();
-//            List<Task> unsignedTasks = claimQuery.list();
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
             tasks.addAll(dynamicFormTasks);
             tasks.addAll(dispatchTasks);
             tasks.addAll(leaveJpaTasks);
         } else {
             tasks = taskService.createTaskQuery().taskCandidateOrAssigned(user.getId()).active().orderByTaskId().desc().list();
         }
-
         mav.addObject("tasks", tasks);
         return mav;
     }
