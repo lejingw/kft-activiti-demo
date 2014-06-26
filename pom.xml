@@ -2,22 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	
 	<groupId>me.kafeitu.demo</groupId>
 	<artifactId>activiti-demo</artifactId>
 	<version>1.11</version>
 	<packaging>war</packaging>
+	
 	<name>Activiti demo</name>
-	<description>activiti demo for version 5.15</description>
-
-	<developers>
-		<developer>
-			<id>henryyan</id>
-			<name>Henry Yan</name>
-			<email>yanhonglei@gmail.com</email>
-			<url>http://www.kafeitu.me</url>
-			<timezone>8</timezone>
-		</developer>
-	</developers>
 
 	<!-- 项目属性 -->
 	<properties>
@@ -464,12 +455,14 @@
 	</dependencies>
 
 	<build>
+        <finalName>activiti-demo</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
+        
 		<plugins>
 			<!-- compiler插件, 设定JDK版本 -->
 			<plugin>
@@ -545,8 +538,6 @@
                 </configuration>
             </plugin>
 		</plugins>
-
-        <finalName>activiti-demo</finalName>
 	</build>
 
 	<profiles>
@@ -556,6 +547,7 @@
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
+<!--
 			<build>
 				<resources>
 					<resource>
@@ -564,43 +556,34 @@
 					</resource>
 				</resources>
 			</build>
+ -->
 		</profile>
 
-		<!-- 刷新开发环境数据库 -->
-		<profile>
-			<id>initdatas</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-antrun-plugin</artifactId>
-						<version>1.7</version>
-						<configuration>
-							<target>
-								<property file="src/main/resources/application.local.properties" />
-								<property file="src/main/resources/application.properties" />
-
-								<property name="sql.type" value="${sql.type}" />
-								<property name="dbunit.datatype" value="org.dbunit.ext.mysql.MySqlDataTypeFactory" />
-
-								<taskdef name="dbunit" classname="org.dbunit.ant.DbUnitTask" classpathref="maven.test.classpath" />
-
-								<!-- add init datas -->
-								<dbunit driver="${jdbc.driver}" url="${jdbc.url}" userid="${jdbc.username}" password="${jdbc.password}">
-									<dbconfig>
-										<property name="datatypeFactory" value="${dbunit.datatype}" />
-									</dbconfig>
-									<classpath refid="maven.test.classpath" />
-									<operation type="CLEAN_INSERT" src="src/test/resources/data/sample-data.xml" format="flat" transaction="true" />
-								</dbunit>
-							</target>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<!-- -->
+        <!-- 在线Demo配置 -->
+        <profile>
+            <id>online</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.juvenxu.portable-config-maven-plugin</groupId>
+                        <artifactId>portable-config-maven-plugin</artifactId>
+                        <version>1.1.5</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>replace-package</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <portableConfig>src/main/portable/online.xml</portableConfig>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+		
+		<!-- 创建数据库 -->
 		<profile>
 			<id>refresh-db</id>
 			<build>
@@ -613,9 +596,6 @@
 							<target>
 								<property file="src/main/resources/application.local.properties" />
 								<property file="src/main/resources/application.properties" />
-
-								<property name="sql.type" value="${sql.type}" />
-								<property name="dbunit.datatype" value="org.dbunit.ext.mysql.MySqlDataTypeFactory" />
 
 								<taskdef name="dbunit" classname="org.dbunit.ant.DbUnitTask" classpathref="maven.test.classpath" />
 
@@ -665,29 +645,36 @@
 				</plugins>
 			</build>
 		</profile>
+		
+		<!-- 刷新开发环境数据库 -->
+		<profile>
+			<id>refresh-data</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.7</version>
+						<configuration>
+							<target>
+								<property file="src/main/resources/application.local.properties" />
+								<property file="src/main/resources/application.properties" />
 
-        <!-- 在线Demo配置 -->
-        <profile>
-            <id>online</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>com.juvenxu.portable-config-maven-plugin</groupId>
-                        <artifactId>portable-config-maven-plugin</artifactId>
-                        <version>1.1.5-SNAPSHOT</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>replace-package</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <portableConfig>src/main/portable/online.xml</portableConfig>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
+								<taskdef name="dbunit" classname="org.dbunit.ant.DbUnitTask" classpathref="maven.test.classpath" />
+
+								<!-- add init datas -->
+								<dbunit driver="${jdbc.driver}" url="${jdbc.url}" userid="${jdbc.username}" password="${jdbc.password}">
+									<dbconfig>
+										<property name="datatypeFactory" value="${dbunit.datatype}" />
+									</dbconfig>
+									<classpath refid="maven.test.classpath" />
+									<operation type="CLEAN_INSERT" src="src/test/resources/data/sample-data.xml" format="flat" transaction="true" />
+								</dbunit>
+							</target>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 </project>

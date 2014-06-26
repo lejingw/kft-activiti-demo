@@ -14,6 +14,7 @@ import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 
 /**

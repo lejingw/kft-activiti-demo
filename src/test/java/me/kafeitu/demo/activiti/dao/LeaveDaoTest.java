@@ -1,19 +1,18 @@
 package me.kafeitu.demo.activiti.dao;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
-import java.util.Date;
+import me.kafeitu.demo.activiti.entity.oa.Leave;
+import me.kafeitu.modules.test.spring.SpringTransactionalTestCase;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ContextConfiguration;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.Date;
 
-import me.kafeitu.demo.activiti.entity.oa.Leave;
-import me.kafeitu.modules.test.spring.SpringTransactionalTestCase;
-
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 /**
  * 请假单元测试
@@ -31,9 +30,8 @@ public class LeaveDaoTest extends SpringTransactionalTestCase {
 
 	@Test
 	//如果你需要真正插入数据库,将Rollback设为false
-	//@Rollback(false) 
+//	@Rollback(false)
 	public void crudEntity() {
-
 		// 保存请假
 		Leave leave = new Leave();
 		leave.setApplyTime(new Date());

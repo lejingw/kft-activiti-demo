@@ -26,6 +26,7 @@ import static org.junit.Assert.*;
  */
 public class LeaveWebserviceInWorkflowTest extends AbstractTest {
 
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     /**
      * 调用Webservice后决定是否需要总经理审批
      * <p/>
@@ -45,7 +46,6 @@ public class LeaveWebserviceInWorkflowTest extends AbstractTest {
         String currentUserId = "henryyan";
         identityService.setAuthenticatedUserId(currentUserId);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Map<String, String> variables = new HashMap<String, String>();
         Calendar ca = Calendar.getInstance();
         String startDate = sdf.format(ca.getTime());

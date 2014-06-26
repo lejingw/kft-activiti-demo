@@ -34,7 +34,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ActiveProfiles("test")
 public class ProcessTestLeavejpa {
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	private String filename = "/home/lejingw/workspaces/git_workspace/activititest/activiti-demo/src/main/resources/diagrams/leave-jpa/leave-jpa.bpmn";
+    private String filename = ProcessTestLeavejpa.class.getClassLoader().getResource("diagrams/leave-jpa/leave-jpa.bpmn").getPath();
+//	private String filename2 = "/home/lejingw/workspaces/git_workspace/activititest/activiti-demo/src/main/resources/diagrams/leave-jpa/leave-jpa.bpmn";
 
 	@Autowired
 	@Rule

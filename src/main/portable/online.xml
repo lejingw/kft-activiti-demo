@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <portable-config>
     <config-file path="WEB-INF/classes/application-files.properties">
-        <replace key="B">file:/home/henry/kad-online-demo.properties</replace>
+        <replace key="B">file:/home/lejingw/activiti-demo-online.properties</replace>
     </config-file>
     <config-file path="WEB-INF/classes/applicationContext.xml">
         <replace xpath="//property[@name='activityFontName']/@value">simsun</replace>

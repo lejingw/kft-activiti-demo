@@ -37,7 +37,7 @@
 
 	<!-- Spring Data Jpa配置 -->
 	<jpa:repositories base-package="me.kafeitu.demo.activiti" transaction-manager-ref="transactionManager"
-		entity-manager-factory-ref="entityManagerFactory" />
+		    entity-manager-factory-ref="entityManagerFactory" />
 
 	<!-- Jpa 事务配置 -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
@@ -61,7 +61,6 @@
 		    </map>
 		</property>
  -->
-		
 		<!-- 自定义表单字段类型 -->
 		<property name="customFormTypes">
 			<list>
@@ -89,8 +88,7 @@
 	<!-- production/local development环境 -->
 	<beans profile="production,development">
 		<context:property-placeholder ignore-unresolvable="true"
-			location="classpath*:/application.properties,
-          			  classpath*:/application.local.properties" />
+			    location="classpath*:/application.properties, classpath*:/application.test.properties" />
 
 		<!-- 数据源配置, 使用DBCP数据库连接池 -->
 		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -112,10 +110,9 @@
 
 	<!-- unit test环境 -->
 	<beans profile="test">
-		<context:property-placeholder ignore-resource-not-found="true"
-			location="classpath:/application.properties,
-					  classpath:/application.test.properties,
-          			  classpath:/application.test.local.properties" />
+        <context:property-placeholder ignore-unresolvable="true"
+                location="classpath*:/application.properties, classpath*:/application.test.properties,
+                          classpath:/application.test.local.properties" />
 
 		<!-- 嵌入式内存中数据库 -->
 		<jdbc:embedded-database id="dataSource" type="H2">
