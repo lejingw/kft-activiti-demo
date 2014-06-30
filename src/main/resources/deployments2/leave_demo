@@ -1,0 +1,22 @@
+/activiti-demo/src/main/webapp/WEB-INF/views/oa/leave/leaveApply.jsp
+/activiti-demo/src/main/webapp/WEB-INF/views/oa/leave/view-form.jsp
+/activiti-demo/src/main/webapp/WEB-INF/views/oa/leave/taskList.jsp
+
+me.kafeitu.demo.activiti.web.oa.leave.LeaveController  startWorkflow
+
+
+1、创建id为leave的流程
+2、部门领导审批节点 deptLeaderAudit 对象为组 deptLeader
+	a、同意 ${deptLeaderPass} 走hr审批节点
+	b、不同意${!deptLeaderPass} 走修改信息节点
+3、hr审批节点 hrAudit 对象为组 hr
+	a、同意 ${hrPass} 走销假节点
+	b、不同意 ${!hrPass} 走修改信息节点
+4、修改信息节点 modifyApply
+	注：修改人为流程发起人，在流程开始节点设置发起人变量为applyUserId，修改信息节点的分配人为${applyUserId}
+	a、修改信息 ${reApply} 走部门领导审批节点
+	b、放弃修改 ${!reApply} 结束流程
+5、销假节点 reportBack
+	销假的分配人为${applyUserId}
+
+

@@ -38,6 +38,7 @@
         </div>
         <div id='portlet-container'></div>
     </div>
+
     <!-- 隐藏 -->
     <div class="forms template">
         <ul>
@@ -73,26 +74,6 @@
         </ul>
     </div>
 
-    <div class="demos template">
-        <ul>
-            <li>部署流程</li>
-            <li>启动流程</li>
-            <li>任务签收</li>
-            <li>任务办理</li>
-            <li>驳回请求</li>
-            <li>查询运行中流程</li>
-            <li>查询历史流程</li>
-            <li>任务监听</li>
-            <li>自定义表单</li>
-            <li>动态表单</li>
-            <li>外置表单</li>
-            <li>个人待办任务汇总</li>
-            <li>分页查询(<font color='red'>New</font>)</li>
-            <li>流程定义缓存(<font color='red'>New</font>)</li>
-            <li>集成Activiti Modeler(<font color='red'>New</font>)</li>
-        </ul>
-    </div>
-
     <div class="rest template">
         <p>在web.xml中映射了两个两个Servlet</p>
         <dl>
@@ -105,7 +86,7 @@
                 <p>官方提供的完整Rest接口</p>
                 <p>访问路径：http://localhost/yourappname/<用户手册提供的Rest地址></p>
                 <p>映射路径：/rest/*</p>
-                <p><a href="http://www.kafeitu.me/activiti/2013/01/12/activiti-demo-rest.html">如何使用Activiti Rest模块</a></p>
+                <p><a href="http://www.kafeitu.me/activiti/2013/01/12/kft-activiti-demo-rest.html">如何使用Activiti Rest模块</a></p>
             </dd>
         </dl>
     </div>

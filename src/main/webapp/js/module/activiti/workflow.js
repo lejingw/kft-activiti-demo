@@ -1,4 +1,5 @@
 function graphTrace(options) {
+ //   alert(options)
 
     var _defaults = {
         srcEle: this,
