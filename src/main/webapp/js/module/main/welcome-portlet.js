@@ -50,25 +50,17 @@ $(function() {
 		}, {
 			width: 250,
 			portlets: [{
-				title: '演示内容',
-				content: {
-					type: 'text',
-					text: function() {
-						return $('.demos').html();
-					}
-				}
-			}   ]
+                title: '架构说明',
+                content: {
+                    type: 'text',
+                    text: function() {
+                        return $('.arch').html();
+                    }
+                }
+            }   ]
 		}, {
 			width: 500,
 			portlets: [{
-				title: '架构说明',
-				content: {
-					type: 'text',
-					text: function() {
-						return $('.arch').html();
-					}
-				}
-			}, {
                 title: 'Rest接口',
                 content: {
                     type: 'text',
