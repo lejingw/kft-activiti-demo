@@ -62,7 +62,7 @@
     <jpa:repositories base-package="me.kafeitu.demo.activiti" transaction-manager-ref="transactionManager"
                       entity-manager-factory-ref="entityManagerFactory"/>
 
-    <!-- Jpa 事务配置 -->
+    <!-- Jpa 事务配置-->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
